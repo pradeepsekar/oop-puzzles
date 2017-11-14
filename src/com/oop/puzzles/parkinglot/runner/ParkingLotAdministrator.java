@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.oops.puzzles.parkinglot.fileprocessor.ParkingLotFileProcessor;
+import com.oop.puzzles.parkinglot.fileprocessor.ParkingLotFileProcessor;
 
 public class ParkingLotAdministrator {
-	private static String path = "C:\\Users\\Pradeep S\\Desktop\\my_program file_inputs.txt";
+	private static String path = "./resources/parkinglot_inputs.txt";
 
 	public static void main(String[] args) {
 		Stream<String> fileStream = null;
