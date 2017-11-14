@@ -1,4 +1,4 @@
-package com.oops.puzzles.parkinglot.fileprocessor;
+package com.oop.puzzles.parkinglot.fileprocessor;
 
 import java.util.ArrayList;
 import java.util.List;
