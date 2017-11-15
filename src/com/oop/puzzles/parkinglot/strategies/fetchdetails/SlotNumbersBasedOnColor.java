@@ -1,6 +1,7 @@
-package com.oop.puzzles.parkinglot.strategies;
+package com.oop.puzzles.parkinglot.strategies.fetchdetails;
 
 import com.oop.puzzles.parkinglot.models.ParkingLot;
+import com.oop.puzzles.parkinglot.strategies.IFetchDetailsStrategy;
 
 public class SlotNumbersBasedOnColor implements IFetchDetailsStrategy {
 
@@ -11,7 +12,7 @@ public class SlotNumbersBasedOnColor implements IFetchDetailsStrategy {
 	}
 	
 	@Override
-	public void getDetails(String condition) {
+	public void getDetails(final String condition) {
 		this.parkingLot.getAllocatedVehicleSlots().stream()
 				.filter(slotId -> this.parkingLot.getVehicleInSlot(slotId).getColor().equalsIgnoreCase(condition))
 				.forEach(System.out::println);

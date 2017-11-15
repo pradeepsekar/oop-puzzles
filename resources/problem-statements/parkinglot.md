@@ -1,7 +1,7 @@
 ####################################################################################
 # PARKING LOT PROBLEM
 
-##Problem Statement
+## Problem Statement
 
 I own a multi-storey parking lot that can hold up to 'n' cars at any
 given point in time. Each slot is given a number starting at 1

@@ -19,7 +19,7 @@ public class ParkingLot {
 	private int totalSlotsAvailable;
 	private Map<Integer, Vehicle> allocatedSlotDetails;
 
-	public ParkingLot(int totalSlots) {
+	public ParkingLot(final int totalSlots) {
 		this.totalSlots = totalSlots;
 		this.nearestSlotAvailable = 1;
 		this.totalSlotsAvailable = totalSlots;
@@ -34,7 +34,7 @@ public class ParkingLot {
 		return totalSlotsAvailable;
 	}
 
-	public void setTotalSlotsAvailable(int totalSlotsAvailable) {
+	public void setTotalSlotsAvailable(final int totalSlotsAvailable) {
 		this.totalSlotsAvailable = totalSlotsAvailable;
 	}
 
@@ -42,7 +42,7 @@ public class ParkingLot {
 		return nearestSlotAvailable;
 	}
 
-	public void setNearestSlotAvailable(int nearestSlotAvailable) {
+	public void setNearestSlotAvailable(final int nearestSlotAvailable) {
 		this.nearestSlotAvailable = nearestSlotAvailable;
 	}
 	
@@ -50,7 +50,7 @@ public class ParkingLot {
 		return this.allocatedSlotDetails.keySet();
 	}
 	
-	public Vehicle getVehicleInSlot(int slotId) {
+	public Vehicle getVehicleInSlot(final int slotId) {
 		return this.allocatedSlotDetails.get(slotId);
 	}
 	
@@ -58,11 +58,11 @@ public class ParkingLot {
 		return this.allocatedSlotDetails.values().stream();
 	}
 
-	public void newVehicleParked(int slotId, Vehicle vehicle) {
+	public void newVehicleParked(final int slotId, final Vehicle vehicle) {
 		this.allocatedSlotDetails.put(slotId, vehicle);
 	}
 
-	public void vehicleLeftParking(int slotId) {
+	public void vehicleLeftParking(final int slotId) {
 		this.allocatedSlotDetails.remove(slotId);
 	}
 

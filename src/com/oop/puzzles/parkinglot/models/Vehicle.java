@@ -12,7 +12,7 @@ public class Vehicle {
 	private final String registrationNumber;
 	private final String color;
 
-	public Vehicle(String registrationNumber, String color) {
+	public Vehicle(final String registrationNumber, final String color) {
 		this.registrationNumber = registrationNumber;
 		this.color = color;
 	}

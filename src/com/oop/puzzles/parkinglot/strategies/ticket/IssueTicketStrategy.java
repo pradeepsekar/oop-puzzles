@@ -1,4 +1,4 @@
-package com.oop.puzzles.parkinglot.strategies;
+package com.oop.puzzles.parkinglot.strategies.ticket;
 
 import java.util.Optional;
 
@@ -6,8 +6,9 @@ import com.oop.puzzles.parkinglot.commands.ICommand;
 import com.oop.puzzles.parkinglot.models.ParkingLot;
 import com.oop.puzzles.parkinglot.models.Ticket;
 import com.oop.puzzles.parkinglot.models.User;
+import com.oop.puzzles.parkinglot.strategies.ITicketStrategy;
 
-public class IssueTicketStrategy implements ITicketStrategy {
+public class IssueTicketStrategy implements ITicketStrategy<Ticket> {
 
 	private ICommand allocateParkingCommand;
 
@@ -15,8 +16,9 @@ public class IssueTicketStrategy implements ITicketStrategy {
 		this.allocateParkingCommand = allocateParkingCommand;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Ticket execute(ParkingLot parkingLot, User user) {
+	public Ticket execute(final ParkingLot parkingLot, final User user) {
 		Ticket ticket = this.allocateParkingCommand.execute(parkingLot, user);
 		if (ticket != null) {
 			parkingLot.setTotalSlotsAvailable(parkingLot.getTotalSlotsAvailable() - 1);

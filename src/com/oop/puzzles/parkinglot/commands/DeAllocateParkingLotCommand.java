@@ -13,13 +13,29 @@ import com.oop.puzzles.parkinglot.models.User;
  */
 public class DeAllocateParkingLotCommand implements ICommand {
 
-	/* (non-Javadoc)
+	private static DeAllocateParkingLotCommand instance = null;
+
+	private DeAllocateParkingLotCommand() {
+	}
+
+	public static synchronized DeAllocateParkingLotCommand getInstance() {
+		if (instance == null) {
+			synchronized (DeAllocateParkingLotCommand.class) {
+				instance = new DeAllocateParkingLotCommand();
+			}
+		}
+		return instance;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.oop.puzzles.parkinglot.commands.ICommand#execute()
 	 */
 	@Override
-	public Ticket execute(ParkingLot parkinglot, User user) {
+	public Ticket execute(final ParkingLot parkinglot, final User user) {
 		parkinglot.vehicleLeftParking(user.getTicket().getAllocatedSlotId());
-		System.out.println("Slot number "+ user.getTicket().getAllocatedSlotId() +" is free");
+		System.out.println("Slot number " + user.getTicket().getAllocatedSlotId() + " is free");
 		return null;
 	}
 
