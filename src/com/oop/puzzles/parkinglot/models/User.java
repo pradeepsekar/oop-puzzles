@@ -17,7 +17,7 @@ public class User {
 		return ticket;
 	}
 
-	public void setTicket(Ticket ticket) {
+	public void setTicket(final Ticket ticket) {
 		this.ticket = ticket;
 	}
 

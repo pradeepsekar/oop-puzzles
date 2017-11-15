@@ -1,8 +1,9 @@
-package com.oop.puzzles.parkinglot.strategies;
+package com.oop.puzzles.parkinglot.strategies.fetchdetails;
 
 import java.util.Optional;
 
 import com.oop.puzzles.parkinglot.models.ParkingLot;
+import com.oop.puzzles.parkinglot.strategies.IFetchDetailsStrategy;
 
 public class SlotNumbersBasedOnRegNo implements IFetchDetailsStrategy {
 
@@ -13,7 +14,7 @@ public class SlotNumbersBasedOnRegNo implements IFetchDetailsStrategy {
 	}
 
 	@Override
-	public void getDetails(String condition) {
+	public void getDetails(final String condition) {
 		Optional<Integer> slotNumber = this.parkingLot.getAllocatedVehicleSlots().stream()
 				.filter(slotId -> this.parkingLot.getVehicleInSlot(slotId).getRegistrationNumber().equalsIgnoreCase(condition))
 				.findFirst();

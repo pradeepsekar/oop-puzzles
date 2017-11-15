@@ -13,6 +13,6 @@ import com.oop.puzzles.parkinglot.models.User;
  */
 public interface ICommand {
 	
-	public Ticket execute(ParkingLot parkinglot, User user);
+	public Ticket execute(final ParkingLot parkinglot, final User user);
 
 }

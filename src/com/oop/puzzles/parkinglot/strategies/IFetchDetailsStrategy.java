@@ -9,6 +9,6 @@ package com.oop.puzzles.parkinglot.strategies;
  */
 public interface IFetchDetailsStrategy {
 	
-	void getDetails(String condition);
+	void getDetails(final String condition);
 
 }
