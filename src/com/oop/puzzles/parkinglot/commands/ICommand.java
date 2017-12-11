@@ -3,9 +3,7 @@
  */
 package com.oop.puzzles.parkinglot.commands;
 
-import com.oop.puzzles.parkinglot.models.ParkingLot;
 import com.oop.puzzles.parkinglot.models.Ticket;
-import com.oop.puzzles.parkinglot.models.User;
 
 /**
  * @author Pradeep S
@@ -13,6 +11,6 @@ import com.oop.puzzles.parkinglot.models.User;
  */
 public interface ICommand {
 	
-	public Ticket execute(final ParkingLot parkinglot, final User user);
+	public Ticket execute(final String registrationNumber, final String color, final int slotNumber);
 
 }

@@ -19,13 +19,17 @@ public class IssueTicketStrategy implements ITicketStrategy<Ticket> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Ticket execute(final ParkingLot parkingLot, final User user) {
-		Ticket ticket = this.allocateParkingCommand.execute(parkingLot, user);
-		if (ticket != null) {
+		Ticket ticket = null;
+		if (parkingLot.getTotalSlotsAvailable() > 0) {
+			ticket = this.allocateParkingCommand.execute(user.getVehicle().getRegistrationNumber(),
+					user.getVehicle().getColor(), parkingLot.getNearestSlotAvailable());
+			parkingLot.newVehicleParked(parkingLot.getNearestSlotAvailable(), user.getVehicle());
 			parkingLot.setTotalSlotsAvailable(parkingLot.getTotalSlotsAvailable() - 1);
 			Optional<Integer> maxAllocatedSlot = parkingLot.getAllocatedVehicleSlots().stream().max(Integer::compareTo);
-			if (parkingLot.getTotalSlotsAvailable() > 0) {
-				parkingLot.setNearestSlotAvailable(maxAllocatedSlot.get() + 1);
-			}
+			parkingLot.newVehicleParked(parkingLot.getNearestSlotAvailable(), user.getVehicle());
+			parkingLot.setNearestSlotAvailable(maxAllocatedSlot.get() + 1);
+		} else {
+			System.out.println("Sorry, parking lot is full");
 		}
 		return ticket;
 	}
