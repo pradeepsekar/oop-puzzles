@@ -18,10 +18,12 @@ public class ReturnTicketStrategy implements ITicketStrategy<Boolean> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Boolean execute(final ParkingLot parkingLot, final User user) {
-		this.deAllocateParkingCommand.execute(parkingLot, user);
+		parkingLot.vehicleLeftParking(user.getTicket().getAllocatedSlotId());
 		parkingLot.setTotalSlotsAvailable(parkingLot.getTotalSlotsAvailable() + 1);
 		Optional<Integer> maxAllocatedSlot = parkingLot.getAllocatedVehicleSlots().stream().max(Integer::compareTo);
 		parkingLot.setNearestSlotAvailable(Integer.min(user.getTicket().getAllocatedSlotId(), maxAllocatedSlot.get()));
+		this.deAllocateParkingCommand.execute(user.getVehicle().getRegistrationNumber(),
+				user.getVehicle().getColor(), parkingLot.getNearestSlotAvailable());
 		return Boolean.TRUE;
 	}
 }

@@ -1,7 +1,7 @@
 package com.oop.puzzles.parkinglot.factories;
 
-import com.oop.puzzles.parkinglot.commands.AllocateParkingLotCommand;
-import com.oop.puzzles.parkinglot.commands.DeAllocateParkingLotCommand;
+import com.oop.puzzles.parkinglot.commands.IssueTicketCommand;
+import com.oop.puzzles.parkinglot.commands.ReturnTicketCommand;
 import com.oop.puzzles.parkinglot.commands.ICommand;
 import com.oop.puzzles.parkinglot.enums.TicketCommandType;
 
@@ -11,11 +11,11 @@ public class TicketTypeFactory {
 		ICommand command = null;
 		switch (ticketCommandType) {
 		case ISSUE_TICKET: {
-			command = AllocateParkingLotCommand.getInstance();
+			command = new IssueTicketCommand();
 			break;
 		}
 		case RETURN_TICKET: {
-			command = DeAllocateParkingLotCommand.getInstance();
+			command = new ReturnTicketCommand();
 			break;
 		}
 		default:
